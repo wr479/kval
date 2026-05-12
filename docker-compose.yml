@@ -1,0 +1,16 @@
+name: korochki-portal
+
+services:
+  web:
+    build: .
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: "3000"
+      HOST: "0.0.0.0"
+      SESSION_SECRET: ${SESSION_SECRET:-korochki-dev-secret-change-in-production}
+    volumes:
+      - korochki_data:/app/data
+
+volumes:
+  korochki_data:
